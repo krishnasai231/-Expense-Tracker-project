@@ -16,6 +16,14 @@ Database schema design with justifications
 Backend & frontend architecture deep dives
 
 10+ common beginner mistakes and how we avoid them
+User Types → app.js → validates → api.js → backend
+   ↓           ↓                                  ↓
+   ↑      utils.js                          returns JSON
+   ↓
+ ui.js renders changes
+   ↑
+ state updates
+
 
 Production-ready improvements roadmap
 
