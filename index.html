@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>💰 Expense Tracker</h1>
+            <p class="subtitle">Track and manage your daily expenses</p>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <!-- LEFT SECTION: Form -->
+            <section class="form-section">
+                <h2>Add New Expense</h2>
+                
+                <!-- Error/Success Messages -->
+                <div id="messageContainer" class="message-container"></div>
+
+                <!-- Form -->
+                <form id="expenseForm" class="expense-form">
+                    <!-- Date Field -->
+                    <div class="form-group">
+                        <label for="expenseDate">Date *</label>
+                        <input
+                            type="date"
+                            id="expenseDate"
+                            name="date"
+                            required
+                            aria-label="Expense date"
+                        >
+                    </div>
+
+                    <!-- Amount Field -->
+                    <div class="form-group">
+                        <label for="expenseAmount">Amount ($) *</label>
+                        <input
+                            type="number"
+                            id="expenseAmount"
+                            name="amount"
+                            step="0.01"
+                            min="0.01"
+                            placeholder="0.00"
+                            required
+                            aria-label="Expense amount"
+                        >
+                    </div>
+
+                    <!-- Category Field -->
+                    <div class="form-group">
+                        <label for="expenseCategory">Category *</label>
+                        <select
+                            id="expenseCategory"
+                            name="category"
+                            required
+                            aria-label="Expense category"
+                        >
+                            <option value="">-- Select Category --</option>
+                            <option value="Food">🍔 Food</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Entertainment">🎬 Entertainment</option>
+                            <option value="Utilities">💡 Utilities</option>
+                            <option value="Healthcare">🏥 Healthcare</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Other">📌 Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Description Field -->
+                    <div class="form-group">
+                        <label for="expenseDescription">Description (Optional)</label>
+                        <textarea
+                            id="expenseDescription"
+                            name="description"
+                            placeholder="Add notes about this expense..."
+                            rows="3"
+                            aria-label="Expense description"
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-full">
+                        ➕ Add Expense
+                    </button>
+                </form>
+            </section>
+
+            <!-- RIGHT SECTION: Expenses List -->
+            <section class="list-section">
+                <div class="list-header">
+                    <h2>Recent Expenses</h2>
+                    <div class="total-section">
+                        <span class="total-label">Total:</span>
+                        <span id="totalAmount" class="total-amount">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingSpinner" class="loading-spinner hidden">
+                    <div class="spinner"></div>
+                    <p>Loading expenses...</p>
+                </div>
+
+                <!-- Expense List -->
+                <div id="expenseList" class="expense-list">
+                    <!-- Expenses will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state hidden">
+                    <p>📭 No expenses yet</p>
+                    <p class="text-muted">Add your first expense above to get started!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="utils.js"></script>
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
